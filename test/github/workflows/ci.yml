@@ -1,0 +1,27 @@
+name: CI/CD Demo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  jobs:
+    build-and-test:
+      runs-on: ubuntu-latest
+
+      steps:
+      -name: Clonar el repositorio
+      uses: actions/checkout@v4
+
+      -name: Configurar Node
+      uses: actions/setups-node@v4
+      with:
+        node-version: '20'
+
+      -name: Instalar dependencia
+      run: npminstall
+
+      -name: (Simulacion de Deploy)
+      if: success()
+      run: echo "Deploy exitoso"
