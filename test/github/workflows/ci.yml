@@ -15,13 +15,14 @@ on:
       uses: actions/checkout@v4
 
       -name: Configurar Node
-      uses: actions/setups-node@v4
+      uses: actions/setup-node@v4
       with:
         node-version: '20'
 
       -name: Instalar dependencia
-      run: npminstall
+      run: npm install
 
       -name: (Simulacion de Deploy)
       if: success()
       run: echo "Deploy exitoso"
+      
